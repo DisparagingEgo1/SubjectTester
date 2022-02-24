@@ -176,7 +176,7 @@ public class Root extends JFrame implements ActionListener,FocusListener {
 							this.results.setText(this.results.getText() + this.workingTest.getName() + ":\n Correct: "+this.workingTest.getTotalCorrect() + " Attempted: "+this.workingTest.getTotal() + " "+
 						String.format("%.2f%%\n\n",((double)this.workingTest.getTotalCorrect()/this.workingTest.getTotal())*100));
 							
-							if(this.workingTest.equals(this.tests.get(this.tests.size()-1))) {
+							if(this.tests.size()==0) {
 								((JButton)e.getSource()).setText("Finish");
 								((JButton)e.getSource()).setName("Exit");
 							}
