@@ -20,7 +20,7 @@ import tests.*;
 
 public class NewTestSuiteFrame extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private static final Test[] easyTests = new Test[] {new Multiplication_Whole_Easy_Test(),new Division_Even_Easy_Test()};
+	private static final Test[] easyTests = new Test[] {new Multiplication_Whole_Easy_Test(),new Division_Even_Easy_Test(),new Fractions_Same_Base_Test()};//,new Fractions_Same_Base_Test()
 	private static final Test[] mediumTests = new Test[] {new Multiplication_Whole_Medium_Test(),new Division_Even_Medium_Test()};
 	private static final Test[] hardTests = new Test[] {new Multiplication_Whole_Hard_Test(),new Division_Even_Hard_Test()};
 	private ArrayList<JCheckBox> options;
@@ -41,6 +41,11 @@ public class NewTestSuiteFrame extends JFrame implements ActionListener {
 		tests.setLayout(new GridLayout());
 		mainPanel.setLayout(new BoxLayout(mainPanel,BoxLayout.Y_AXIS));
 		
+		//Maximum size of all testing arrays for formatting
+		int maxTestSize =NewTestSuiteFrame.easyTests.length;
+		if(maxTestSize < NewTestSuiteFrame.mediumTests.length)maxTestSize = NewTestSuiteFrame.mediumTests.length;
+		if(maxTestSize < NewTestSuiteFrame.hardTests.length)maxTestSize = NewTestSuiteFrame.hardTests.length;
+		
 		//easy tests
 		this.options = new ArrayList<JCheckBox>();
 		JPanel easyLabelPanel = new JPanel();
@@ -50,17 +55,26 @@ public class NewTestSuiteFrame extends JFrame implements ActionListener {
 		easyLabelPanel.add(easyLabel);
 		mainPanel.add(easyLabelPanel);
 		int count = 0;
-		for(int i = 0; i < NewTestSuiteFrame.easyTests.length; i++) {
-			JCheckBox newItem = new JCheckBox(NewTestSuiteFrame.easyTests[i].getName());
+		for(int i = 0; i < maxTestSize; i++) {
+			JCheckBox newItem = null;
+			if(i <= NewTestSuiteFrame.easyTests.length -1) {
+				newItem = new JCheckBox(NewTestSuiteFrame.easyTests[i].getName());
+				this.options.add(newItem);
+			}
+			else {
+				newItem = new JCheckBox();
+				newItem.setEnabled(false);
+				newItem.setVisible(false);
+			}
 			tests.add(newItem);
 			count++;
-			this.options.add(newItem);
-			if(count == 4 ||i== NewTestSuiteFrame.easyTests.length-1) {
+			if(count == 4 ||i== maxTestSize-1) {
 				mainPanel.add(tests);
 				tests = new JPanel();
 				tests.setLayout(new GridLayout());
 				count = 0;
 			}
+			
 		}
 		
 		//medium tests
@@ -71,17 +85,26 @@ public class NewTestSuiteFrame extends JFrame implements ActionListener {
 		mediumLabelPanel.add(mediumLabel);
 		mainPanel.add(mediumLabelPanel);
 		count = 0;
-		for(int i = 0; i < NewTestSuiteFrame.mediumTests.length; i++) {
-			JCheckBox newItem = new JCheckBox(NewTestSuiteFrame.mediumTests[i].getName());
+		for(int i = 0; i < maxTestSize; i++) {
+			JCheckBox newItem = null;
+			if(i <= NewTestSuiteFrame.mediumTests.length -1) {
+				newItem = new JCheckBox(NewTestSuiteFrame.mediumTests[i].getName());
+				this.options.add(newItem);
+			}
+			else {
+				newItem = new JCheckBox();
+				newItem.setEnabled(false);
+				newItem.setVisible(false);
+			}
 			tests.add(newItem);
 			count++;
-			this.options.add(newItem);
-			if(count == 4 ||i== NewTestSuiteFrame.mediumTests.length-1) {
+			if(count == 4 ||i== maxTestSize-1) {
 				mainPanel.add(tests);
 				tests = new JPanel();
 				tests.setLayout(new GridLayout());
 				count = 0;
 			}
+			
 		}
 		//hard tests
 		JPanel hardLabelPanel = new JPanel();
@@ -91,17 +114,26 @@ public class NewTestSuiteFrame extends JFrame implements ActionListener {
 		hardLabelPanel.add(hardLabel);
 		mainPanel.add(hardLabelPanel);
 		count = 0;
-		for(int i = 0; i < NewTestSuiteFrame.hardTests.length; i++) {
-			JCheckBox newItem = new JCheckBox(NewTestSuiteFrame.hardTests[i].getName());
+		for(int i = 0; i < maxTestSize; i++) {
+			JCheckBox newItem = null;
+			if(i <= NewTestSuiteFrame.hardTests.length -1) {
+				newItem = new JCheckBox(NewTestSuiteFrame.hardTests[i].getName());
+				this.options.add(newItem);
+			}
+			else {
+				newItem = new JCheckBox();
+				newItem.setEnabled(false);
+				newItem.setVisible(false);
+			}
 			tests.add(newItem);
 			count++;
-			this.options.add(newItem);
-			if(count == 4 ||i== NewTestSuiteFrame.hardTests.length-1) {
+			if(count == 4 ||i== maxTestSize-1) {
 				mainPanel.add(tests);
 				tests = new JPanel();
 				tests.setLayout(new GridLayout());
 				count = 0;
 			}
+			
 		}
 		JPanel submitPanel = new JPanel();
 		JButton submit = new JButton("Submit");

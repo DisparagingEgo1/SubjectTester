@@ -13,6 +13,8 @@ public class ProblemFactory {
 					return new Multiplication_Whole_Easy();
 				case DIVISION_EVEN:
 					return new Division_Even_Easy();
+				case FRACTION_SAME_BASE:
+					return new Fractions_Same_Base();
 			}
 			break;
 		case MEDIUM:

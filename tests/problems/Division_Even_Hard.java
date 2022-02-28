@@ -1,5 +1,6 @@
 package tests.problems;
 
+import java.awt.Font;
 import java.util.Random;
 
 import javax.swing.JTextPane;
@@ -49,6 +50,7 @@ public class Division_Even_Hard extends Problem {
 	@Override
 	public void displayProblem(JTextPane obj) throws BadLocationException {
 		obj.setText("");
+		obj.setFont(new Font("Tahoma",Font.BOLD,35));
 		String[] theProblem = this.problem.split(" ");
 		SimpleAttributeSet attributeSet = new SimpleAttributeSet();
 		StyleConstants.setForeground(attributeSet, obj.getBackground());
